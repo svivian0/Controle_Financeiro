@@ -8,6 +8,7 @@ class finanças:
         self.fonte="Montserrat"
         self.bold="bold"
         self.seta=PhotoImage(file="img/seta.png")
+        self.qualtela=None
 
 
 
@@ -25,6 +26,19 @@ class finanças:
             self.TelaInicial.deiconify()
         except:
             pass
+        try:
+            self.TelaCarteira.withdraw()
+        except:
+            pass
+        try:
+            self.TelaGastos.withdraw()
+        except:
+            pass
+
+    def BotaoVoltar(self):
+        voltar=Button(self.qualtela, image=self.seta, command=self.Voltar,bg="#363636", borderwidth=0)
+        voltar.place(x=0, y=0)
+
 
     def JanelaMetas(self):
         self.TelaMetas=Toplevel(self.TelaInicial)
@@ -33,11 +47,29 @@ class finanças:
         self.TelaMetas.configure(bg="#363636")
         self.TelaMetas.title("METAS")
 
+        self.qualtela=self.TelaMetas
+        self.BotaoVoltar()
 
 
-        voltar=Button(self.TelaMetas, image=self.seta, command=self.Voltar,bg="#363636", borderwidth=0)
-        voltar.place(x=0, y=0)
+    def JanelaCarteira(self):
+        self.TelaCarteira=Toplevel(self.TelaInicial)
+        self.TelaInicial.withdraw()
+        self.TelaCarteira.geometry("1280x720")
+        self.TelaCarteira.configure(bg="#363636")
+        self.TelaCarteira.title("CARTEIRA")
 
+        self.qualtela=self.TelaCarteira
+        self.BotaoVoltar()
+
+    def JanelaGastos(self):
+        self.TelaGastos=Toplevel(self.TelaInicial)
+        self.TelaInicial.withdraw()
+        self.TelaGastos.geometry("1280x720")
+        self.TelaGastos.configure(bg="#363636")
+        self.TelaGastos.title("GASTOS")
+
+        self.qualtela=self.TelaGastos
+        self.BotaoVoltar()
 
     def JanelaInicial(self):
         print("ligou")
@@ -61,6 +93,34 @@ class finanças:
                           command=self.JanelaMetas,
                           text="Metas")
         BotaoMetas.place(x=37, y=241)
+
+        BotaoCarteira=customtkinter.CTkButton(self.TelaInicial,
+                          fg_color="#d9d9d9",
+                          text_color="#363636",
+                          font=(self.fonte, 30, self.bold),
+                          corner_radius=60, 
+                          width=183,
+                          height=62,
+                          command=self.JanelaCarteira,
+                          text="Carteira")
+        BotaoCarteira.place(x=37, y=363)
+
+        BotaoCarteira=customtkinter.CTkButton(self.TelaInicial,
+                          fg_color="#d9d9d9",
+                          text_color="#363636",
+                          font=(self.fonte, 30, self.bold),
+                          corner_radius=60, 
+                          width=183,
+                          height=62,
+                          command=self.JanelaGastos,
+                          text="Gastos")
+        
+
+
+        BotaoCarteira.place(x=37, y=495)
+
+
+
 
 
 
