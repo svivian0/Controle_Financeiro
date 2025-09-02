@@ -50,7 +50,6 @@ class finanças:
         self.qualtela=self.TelaMetas
         self.BotaoVoltar()
 
-
     def JanelaCarteira(self):
         self.TelaCarteira=Toplevel(self.TelaInicial)
         self.TelaInicial.withdraw()
@@ -60,6 +59,18 @@ class finanças:
 
         self.qualtela=self.TelaCarteira
         self.BotaoVoltar()
+
+        CARTEIRA=Label(self.TelaCarteira, text="CARTEIRA", font=("Montserrat", 40, "bold"), bg="#363636", fg="#d9d9d9")
+        CARTEIRA.place(x=466, y=14)
+
+
+        blocoSaldo=customtkinter.CTkFrame(self.TelaCarteira, fg_color="#d9d9d9", width=550, height=223, corner_radius=45)
+        blocoSaldo.place(x=-89, y=154)
+
+        SaldoBloco=Label(blocoSaldo, text="SALDO", font=("Montserrat", 30, "bold"), bg="#d9d9d9", fg="#363636")
+        SaldoBloco.place(x=230, y=0)
+
+
 
     def JanelaGastos(self):
         self.TelaGastos=Toplevel(self.TelaInicial)
@@ -114,15 +125,7 @@ class finanças:
                           height=62,
                           command=self.JanelaGastos,
                           text="Gastos")
-        
-
-
         BotaoCarteira.place(x=37, y=495)
-
-
-
-
-
 
     def Iniciar(self):
         self.TelaInicial.mainloop()
