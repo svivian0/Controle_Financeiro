@@ -9,7 +9,7 @@ class finanças:
         self.bold="bold"
         self.seta=PhotoImage(file="img/seta.png")
         self.qualtela=None
-        self.teste=None
+
 
 
     def ConfgTela(self): ## configurações padrao de tela
